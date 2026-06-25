@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>شحن جواهر - Free Fire</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="welcome-card">
+        <span class="welcome-badge">مرحبا</span>
+        <h2>مرحبا بك في Divine-Ego</h2>
+        <p>أفضل موقع شحن جواهر فريفاير مع واجهة فضائية حديثة وسهلة الاستخدام.</p>
+        <ul>
+          <li>شحن باقات جواهر سهل وسريع.</li>
+          <li>استخدم كود <strong>NIGHTFURY</strong> للحصول على أول باقة مجانية.</li>
+        </ul>
+        <button id="enterBtn" class="secondary">دخول</button>
+      </div>
+    </div>
+
+    <div class="app-shell hidden" id="appShell">
+      <div class="top-title">divine--ego</div>
+      <div class="brand" aria-hidden="true">
+        <div class="admin">ادارة garena</div>
+        <div class="name">NIGHT FURY</div>
+      </div>
+      <main class="container">
+        <header>
+          <h1>شحن جواهر فريفاير</h1>
+        </header>
+
+      <section class="card">
+        <label for="userId">ادخل رقم UID (8 أرقام)</label>
+        <input id="userId" type="text" maxlength="8" inputmode="numeric" pattern="\d{8}" placeholder="مثال: 12345678" />
+
+        <label for="pack">اختر باقة الجواهر</label>
+        <select id="pack">
+          {% for p in packs %}
+          <option value="{{ p.id }}">{{ p.gems }} جواهر — ${{ '%.2f' % p.price }}</option>
+          {% endfor %}
+        </select>
+
+        <div class="promo-row">
+          <label for="promoCode">ادخل كود الخصم</label>
+          <input id="promoCode" type="text" maxlength="16" placeholder="كود: NIGHTFURY" />
+          <small class="promo-hint">استخدم الكود للحصول على أول باقة مجانا عند اختيار أول باقة.</small>
+        </div>
+
+        <div class="actions">
+          <button id="buyBtn" class="primary">شحن الآن</button>
+        </div>
+
+        <div id="message" class="message" aria-live="polite"></div>
+      </section>
+
+      <footer>
+      </footer>
+      </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
